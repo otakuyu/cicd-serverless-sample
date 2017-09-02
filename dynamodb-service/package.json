@@ -1,0 +1,17 @@
+{
+  "name": "dynamodb-service",
+  "description": "Service for querying dynamodb",
+  "version": "0.0.1",
+  "author": "Alex Yu",
+  "engines": {
+    "node": ">=4.3"
+  },
+  "main": "config.js",
+  "dependencies": {
+    "aws-sdk": "^2.21.0",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "serverless-offline": "^3.10.2"
+  }
+}

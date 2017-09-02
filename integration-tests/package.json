@@ -1,0 +1,19 @@
+{
+    "name": "integration-test",
+    "description": "Contains integration tests",
+    "version": "0.0.1",
+    "author": "Alex Yu",
+    "engines": {
+      "node": ">=4.3"
+    },
+    "main": "test.js",
+    "dependencies": {
+      "q": "~1.4.1"
+    },
+    "devDependencies": {
+      "mocha": "~3.5.0",
+      "supertest": "~3.0.0",
+      "should": "~11.2.0"
+    }
+  }
+  

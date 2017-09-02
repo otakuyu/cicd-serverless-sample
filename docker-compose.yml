@@ -1,0 +1,39 @@
+version: '3'
+services:
+  api:
+    build: ./api-service
+    expose:
+      - "3000"
+    ports:
+      - 3000:3000
+    volumes:
+      - ./api-service:/root/app
+    working_dir: /root/app
+    command: serverless offline --host 0.0.0.0 --port 3000 start
+  db-service:
+    build: ./dynamodb-service
+    expose:
+      - "3001"
+    ports:
+      - 3001:3001
+    volumes:
+      - ./dynamodb-service:/root/app
+    links:
+      - db
+    working_dir: /root/app
+    command: serverless offline --host 0.0.0.0 --port 3001 start
+  db:
+    image: deangiberson/aws-dynamodb-local
+
+  integration-test:
+    build: ./integration-tests
+    volumes:
+      - ./integration-tests:/root/app
+    working_dir: /root/app
+    links:
+      - api
+    command: mocha
+    depends_on:
+      - api
+      - db-service
+      - db
