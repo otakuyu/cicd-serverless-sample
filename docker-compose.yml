@@ -8,6 +8,8 @@ services:
       - 3000:3000
     volumes:
       - ./api-service:/root/app
+    links:
+      - db-service
     working_dir: /root/app
     command: serverless offline --host 0.0.0.0 --port 3000 start
   db-service:
@@ -32,7 +34,9 @@ services:
     working_dir: /root/app
     links:
       - api
-    command: mocha
+      - db
+      - db-service
+    command: sh ./index.sh
     depends_on:
       - api
       - db-service

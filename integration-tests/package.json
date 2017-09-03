@@ -8,6 +8,7 @@
     },
     "main": "test.js",
     "dependencies": {
+      "aws-sdk": "^2.21.0",
       "q": "~1.4.1"
     },
     "devDependencies": {

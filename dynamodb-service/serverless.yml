@@ -61,7 +61,14 @@ functions:
     handler: handler.get
     events:
       - http:
-          path: /
+          path: /get
+          method: get
+
+  list:
+    handler: handler.list
+    events:
+      - http:
+          path: /list
           method: get
 
 #    The following are a few example events you can configure
