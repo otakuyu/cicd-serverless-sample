@@ -60,7 +60,7 @@ functions:
   hello:
     handler: handler.get
     environment:
-      TEST_TABLE: ${env:TEST_TABLE} 
+      TABLE_NAME: ${env:TABLE_NAME} 
     events:
       - http:
           path: /get
@@ -69,7 +69,7 @@ functions:
   list:
     handler: handler.list
     environment:
-      TEST_TABLE: ${env:TEST_TABLE} 
+      TABLE_NAME: ${env:TABLE_NAME} 
     events:
       - http:
           path: /list

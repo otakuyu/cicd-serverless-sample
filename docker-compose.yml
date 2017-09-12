@@ -14,6 +14,8 @@ services:
     command: serverless offline --host 0.0.0.0 --port 3000 start
   db-service:
     build: ./dynamodb-service
+    environment:
+      - TABLE_NAME
     expose:
       - "3001"
     ports:
@@ -29,6 +31,8 @@ services:
 
   integration-test:
     build: ./integration-tests
+    environment:
+      - TABLE_NAME
     volumes:
       - ./integration-tests:/root/app
     working_dir: /root/app

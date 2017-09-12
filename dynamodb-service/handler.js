@@ -9,11 +9,11 @@ let awsConfig = {
   "endpoint": "http://db:8000"
 }
 let dyClient = new AWS.DynamoDB.DocumentClient(awsConfig)
-
+let tableName = process.env.TABLE_NAME
 module.exports.get = (event, context, callback) => {
 
   dyClient.put({
-    TableName: "Test",
+    TableName: tableName,
     Item: {
       test_id: "11111"
     }
@@ -43,7 +43,7 @@ module.exports.get = (event, context, callback) => {
 
 module.exports.list = (event, context, callback) => {
   dyClient.scan({
-    TableName: "Test"
+    TableName: tableName
   }, function(err, data){
     if(err){
       console.log(err)
