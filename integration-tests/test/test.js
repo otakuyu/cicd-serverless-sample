@@ -14,6 +14,7 @@ let dynamodb = new AWS.DynamoDB(awsConfig)
 
 let requestApi = request('http://api:3000');
 let requestDBServer = request('http://db-service:3001')
+let tableName = process.env.TABLE_NAME
 describe('Integration Testing', function() {
     
     before(function(done) {
@@ -34,7 +35,7 @@ describe('Integration Testing', function() {
                 ReadCapacityUnits: 5, 
                 WriteCapacityUnits: 5
             }, 
-            TableName: "Test"
+            TableName: tableName
         }, function(err, data){
             if(err){
                 return done(err)
@@ -45,7 +46,7 @@ describe('Integration Testing', function() {
 
     after(function(done) {
        dynamodb.deleteTable({
-           TableName: "Test"
+           TableName: tableName
        }, function(err, data){
            if(err){
                return done(err)
@@ -115,7 +116,7 @@ describe('Integration Testing', function() {
 module.exports.get = (event, context, callback) => {
 
   dyCLient.put({
-    TableName: "Test",
+    TableName: tableName,
     Item: {
       test_id: "11111"
     }
