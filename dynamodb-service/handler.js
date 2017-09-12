@@ -8,6 +8,13 @@ let awsConfig = {
   "region":process.env.AWS_REGION,
   "endpoint": "http://db:8000"
 }
+
+if(process.env.NODE_ENV){
+  awsConfig = {
+    "region": process.env.AWS_REGION
+  }
+}
+
 let dyClient = new AWS.DynamoDB.DocumentClient(awsConfig)
 let tableName = process.env.TABLE_NAME
 module.exports.get = (event, context, callback) => {

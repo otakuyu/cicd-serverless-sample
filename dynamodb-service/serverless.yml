@@ -61,6 +61,7 @@ functions:
     handler: handler.get
     environment:
       TABLE_NAME: ${env:TABLE_NAME} 
+      NODE_ENV: ${opt:stage}
     events:
       - http:
           path: /get
@@ -70,6 +71,7 @@ functions:
     handler: handler.list
     environment:
       TABLE_NAME: ${env:TABLE_NAME} 
+      NODE_ENV: ${opt:stage}
     events:
       - http:
           path: /list
