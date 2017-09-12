@@ -5,7 +5,7 @@ let awsConfig = {
   "apiVersion": "2012-08-10",
   "accessKeyId": "abcde",
   "secretAccessKey": "abcde",
-  "region":"us-west-2",
+  "region":process.env.AWS_REGION,
   "endpoint": "http://db:8000"
 }
 let dyClient = new AWS.DynamoDB.DocumentClient(awsConfig)
